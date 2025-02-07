@@ -5,9 +5,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container bg-amber-300">
-        <h1>hello </h1>
-      </div>
     </>
   );
 }
