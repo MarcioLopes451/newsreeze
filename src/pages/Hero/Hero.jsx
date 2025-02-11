@@ -3,6 +3,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 const api_url =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=3e41fa0ff049417392568d35d92d96d6";
+
 export default function Hero() {
   const [input, setInput] = useState("");
   const [news, setNews] = useState([]);
@@ -42,7 +43,11 @@ export default function Hero() {
               key={`${article.author}-${article.publishedAt}`}
               className="container w-[150px] h-[200px]"
             >
-              <img src={article.urlToImage} className="h-[100px]" />
+              <img
+                src={article.urlToImage}
+                className="h-[100px]"
+                alt={article.title}
+              />
               <div className="mt-2 text-xs">
                 <h2 className="">{article.title}</h2>
                 <div className="flex justify-between items-center">
@@ -55,7 +60,7 @@ export default function Hero() {
         </div>
         {news.length > 8 && (
           <button onClick={() => setTotal((prev) => !prev)}>
-            {total ? "show less " : "show all"}
+            {total ? "Show Less" : "Show All"}
           </button>
         )}
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function SearchBar({
   input,
@@ -9,30 +9,39 @@ export default function SearchBar({
 }) {
   const handleSearch = () => {
     if (input.trim() !== "") {
-      const filteredNews = news.filter((article) =>
+      // Filter from originalNews instead of news
+      const filteredNews = originalNews.filter((article) =>
         article.title.toLowerCase().includes(input.toLowerCase())
       );
       setNews(filteredNews);
     } else {
+      // Reset to originalNews if input is empty
       setNews(originalNews);
     }
     setInput("");
   };
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "Enter") {
+  //       handleSearch();
+  //     }
+  //   };
+
+  useEffect(() => {
+    console.log("News updated:", news);
+  }, [news]);
+
   return (
     <div>
       <input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyDown}
+        //onKeyDown={handleKeyDown}
         placeholder="search for anything..."
         className="border border-greySky w-[260px] h-[40px] px-3 font-sans rounded-3xl"
       />
+      <button onClick={handleSearch}>search</button>
     </div>
   );
 }
