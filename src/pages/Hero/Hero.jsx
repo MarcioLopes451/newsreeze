@@ -7,6 +7,7 @@ export default function Hero() {
   const [input, setInput] = useState("");
   const [news, setNews] = useState([]);
   const [originalNews, setOriginalNews] = useState([]);
+  const [total, setTotal] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -21,6 +22,9 @@ export default function Hero() {
     };
     fetchNews();
   }, []);
+
+  const displayedArticles = total ? news : news.slice(0, 8);
+
   return (
     <div className="pt-5 px-4">
       <SearchBar
@@ -30,15 +34,30 @@ export default function Hero() {
         setNews={setNews}
         originalNews={originalNews}
       />
-      <div>
+      <div className="mt-5">
         <h2>Today's Headlines</h2>
-        <div className="flex justify-center items-center flex-col gap-4">
-          {news.map((article) => (
-            <div key={`${article.author}-${article.publishedAt}`}>
-              <h2>{article.title}</h2>
+        <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
+          {displayedArticles.map((article) => (
+            <div
+              key={`${article.author}-${article.publishedAt}`}
+              className="container w-[150px] h-[200px]"
+            >
+              <img src={article.urlToImage} className="h-[100px]" />
+              <div className="mt-2 text-xs">
+                <h2 className="">{article.title}</h2>
+                <div className="flex justify-between items-center">
+                  <p>{article.author}</p>
+                  <p>{article.publishedAt.slice(0, 10)}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+        {news.length > 8 && (
+          <button onClick={() => setTotal((prev) => !prev)}>
+            {total ? "show less " : "show all"}
+          </button>
+        )}
       </div>
     </div>
   );
