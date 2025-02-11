@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import ArticleCards from "../../components/ArticleCards/ArticleCards";
 
 const api_url =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=3e41fa0ff049417392568d35d92d96d6";
@@ -39,27 +40,20 @@ export default function Hero() {
         <h2>Today's Headlines</h2>
         <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
           {displayedArticles.map((article) => (
-            <div
+            <ArticleCards
               key={`${article.author}-${article.publishedAt}`}
-              className="container w-[150px] h-[200px]"
-            >
-              <img
-                src={article.urlToImage}
-                className="h-[100px]"
-                alt={article.title}
-              />
-              <div className="mt-2 text-xs">
-                <h2 className="">{article.title}</h2>
-                <div className="flex justify-between items-center">
-                  <p>{article.author}</p>
-                  <p>{article.publishedAt.slice(0, 10)}</p>
-                </div>
-              </div>
-            </div>
+              title={article.title}
+              img={article.urlToImage}
+              author={article.author}
+              date={article.publishedAt.slice(0, 10)}
+            />
           ))}
         </div>
         {news.length > 8 && (
-          <button onClick={() => setTotal((prev) => !prev)}>
+          <button
+            onClick={() => setTotal((prev) => !prev)}
+            className="mt-5 bg-pinkZel w-[75px] h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
+          >
             {total ? "Show Less" : "Show All"}
           </button>
         )}
