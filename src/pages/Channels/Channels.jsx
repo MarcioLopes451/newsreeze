@@ -34,7 +34,7 @@ export default function Channels() {
           className="mt-5 bg-pinkZel w-[75px] h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
           onClick={handleNavigate}
         >
-          go back
+          Go Back
         </button>
       </div>
       <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
