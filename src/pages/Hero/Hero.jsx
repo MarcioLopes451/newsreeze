@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ArticleCards from "../../components/ArticleCards/ArticleCards";
+import NoImg from "../../assets/No_Image_Available.jpg";
+import ExploreChannels from "../../components/ExploreChannels/ExploreChannels";
 
 const api_url =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=3e41fa0ff049417392568d35d92d96d6";
@@ -36,6 +38,7 @@ export default function Hero() {
         setNews={setNews}
         originalNews={originalNews}
       />
+      <ExploreChannels />
       <div className="mt-5">
         <h2>Today's Headlines</h2>
         <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
@@ -43,9 +46,9 @@ export default function Hero() {
             <ArticleCards
               key={`${article.author}-${article.publishedAt}`}
               title={article.title}
-              img={article.urlToImage}
-              author={article.author}
-              date={article.publishedAt.slice(0, 10)}
+              img={article.urlToImage === null ? NoImg : article.urlToImage}
+              author={article.author === null ? "no author" : article.author}
+              date={article.publishedAt.slice(12, 16)}
             />
           ))}
         </div>
