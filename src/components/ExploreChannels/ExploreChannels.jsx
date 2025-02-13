@@ -9,7 +9,7 @@ import WorldImg from "../../assets/world-img.png";
 
 export default function ExploreChannels() {
   return (
-    <div>
+    <div className="mt-5 px-4">
       <h2>Explore Channels</h2>
       <div className="flex justify-between flex-row items-center flex-wrap gap-5">
         <Link to={`/newsreeze/channels/${"crypto"}`}>

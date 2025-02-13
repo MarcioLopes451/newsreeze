@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  fireEvent,
-  getByPlaceholderText,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import Hero from "../src/pages/Hero/Hero";
