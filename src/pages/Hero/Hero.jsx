@@ -45,10 +45,11 @@ export default function Hero() {
           {displayedArticles.map((article) => (
             <ArticleCards
               key={`${article.author}-${article.publishedAt}`}
-              title={article.title}
+              title={article.title.split("-")[0]}
               img={article.urlToImage === null ? NoImg : article.urlToImage}
               author={article.author === null ? "no author" : article.author}
               date={article.publishedAt.slice(12, 16)}
+              link={article.url}
             />
           ))}
         </div>
