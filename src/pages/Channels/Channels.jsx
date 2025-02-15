@@ -60,7 +60,11 @@ export default function Channels() {
         {articles.map((channel) => (
           <ArticleCards
             key={`${channel.author}-${channel.publishedAt}-${channel.url}`}
-            title={channel.title.split("-")[0]}
+            title={
+              channel.title.length > 50
+                ? `${channel.title.slice(0, 40)}...`
+                : channel.title
+            }
             img={
               channel.urlToImage === null
                 ? NoImg
@@ -68,7 +72,15 @@ export default function Channels() {
                 ? NoImg
                 : channel.urlToImage
             }
-            author={channel.author === null ? "no author" : channel.author}
+            author={
+              channel.author === null
+                ? "no author"
+                : channel.author === ""
+                ? "no author"
+                : channel.author.length > 30
+                ? `${channel.author.slice(0, 20)}...`
+                : channel.author
+            }
             date={channel.publishedAt.slice(12, 16)}
             link={channel.url}
           />

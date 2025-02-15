@@ -7,10 +7,12 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/newsreeze/" element={<Hero />} />
-        <Route path="/newsreeze/channels/:name" element={<Channels />} />
-      </Routes>
+      <div className="bg-lightWhite">
+        <Routes>
+          <Route path="/newsreeze/" element={<Hero />} />
+          <Route path="/newsreeze/channels/:name" element={<Channels />} />
+        </Routes>
+      </div>
     </>
   );
 }

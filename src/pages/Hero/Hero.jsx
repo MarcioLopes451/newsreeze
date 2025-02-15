@@ -40,14 +40,24 @@ export default function Hero() {
       />
       <ExploreChannels />
       <div className="mt-5">
-        <h2>Today's Headlines</h2>
+        <h2 className="font-semibold">Today's Headlines</h2>
         <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
           {displayedArticles.map((article) => (
             <ArticleCards
               key={`${article.author}-${article.publishedAt}`}
-              title={article.title.split("-")[0]}
+              title={
+                article.title.length > 50
+                  ? `${article.title.slice(0, 40)}...`
+                  : article.title
+              }
               img={article.urlToImage === null ? NoImg : article.urlToImage}
-              author={article.author === null ? "no author" : article.author}
+              author={
+                article.author === null
+                  ? "no author"
+                  : article.author === ""
+                  ? "no author"
+                  : article.author
+              }
               date={article.publishedAt.slice(12, 16)}
               link={article.url}
             />
