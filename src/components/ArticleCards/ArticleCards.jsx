@@ -5,7 +5,11 @@ export default function ArticleCards({ img, title, author, date, link }) {
   return (
     <Link to={link}>
       <div className="container w-[150px] h-[200px]">
-        <img src={img} className="h-[100px] rounded-[10px]" alt={author} />
+        <img
+          src={img}
+          className="h-[110px] rounded-[10px] w-[150px]"
+          alt={author}
+        />
         <div className="mt-2 text-xs flex justify-center items-center flex-col gap-3">
           <h2 className="text-center font-medium">{title}</h2>
           <div className="flex justify-between items-center flex-col gap-2">

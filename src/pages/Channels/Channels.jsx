@@ -77,7 +77,7 @@ export default function Channels() {
                 ? "no author"
                 : channel.author === ""
                 ? "no author"
-                : channel.author.length > 30
+                : channel.author.length > 20
                 ? `${channel.author.slice(0, 20)}...`
                 : channel.author
             }
