@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ArticleCards from "../../components/ArticleCards/ArticleCards";
 import NoImg from "../../assets/No_Image_Available.jpg";
+import LeftIcon from "../../assets/352467_arrow_left_icon (1).png";
+import RightIcon from "../../assets/352468_arrow_right_icon (1).png";
 
 export default function Channels() {
   const [channels, setChannels] = useState([]);
@@ -48,12 +50,30 @@ export default function Channels() {
   return (
     <div className="pt-5 px-4">
       <div className="flex justify-between items-center">
-        <h2>{name} channel</h2>
+        <h2 className="font-semibold">
+          {name === "tech"
+            ? "Technology"
+            : name === "crypto"
+            ? "Crypto"
+            : name === "sports"
+            ? "Sports"
+            : name === "gb"
+            ? "Great Britain"
+            : name === "us"
+            ? "America"
+            : name === "world"
+            ? "World"
+            : "no channel"}{" "}
+          Channel
+        </h2>
         <button
-          className="mt-5 bg-pinkZel w-[75px] h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
+          className="h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
           onClick={handleNavigate}
         >
-          Go Back
+          <div className="flex items-center flex-row-reverse">
+            <p>Go back</p>
+            <img src={LeftIcon} className="w-[20px]" />
+          </div>
         </button>
       </div>
       <div className="mt-5 flex justify-between items-center flex-row flex-wrap gap-5">
@@ -86,21 +106,30 @@ export default function Channels() {
           />
         ))}
       </div>
-      <div className="flex justify-center items-center gap-5">
+      <div className="flex justify-center items-center mt-8">
         <button
-          className="bg-pinkZel w-[75px] h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
+          className="w-[75px] h-[24px] text-sm text-purpleRain font-semibold"
           onClick={handlePrev}
           disabled={currentPage === 1}
         >
-          Prev
+          <div className="flex items-center">
+            <img src={LeftIcon} className="w-[20px]" />
+            <p>Prev</p>
+          </div>
         </button>
-        <p>Page {currentPage}</p>
+        <p className="text-sm bg-pinkZel rounded-full w-[30px] h-[30px] flex justify-center items-center text-purpleRain font-bold border-purpleRain border-[2px]">
+          {" "}
+          {currentPage}
+        </p>
         <button
-          className="bg-pinkZel w-[75px] h-[24px] text-sm text-purpleRain font-medium rounded-[5px]"
+          className="w-[75px] h-[24px] text-sm text-purpleRain font-medium"
           onClick={handleNext}
           disabled={currentPage === totalArticles}
         >
-          Next
+          <div className="flex items-center flex-row-reverse">
+            <img src={RightIcon} className="w-[20px]" />
+            <p>Next</p>
+          </div>
         </button>
       </div>
     </div>
