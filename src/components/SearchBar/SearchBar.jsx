@@ -27,7 +27,7 @@ export default function SearchBar({ input, setInput, originalNews, setNews }) {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="search for anything..."
-        className="border border-greySky w-[260px] h-[40px] px-3 font-sans rounded-[10px] bg-white placeholder:text-black"
+        className="border border-greySky w-[260px] h-[40px] px-3 font-sans rounded-[10px] bg-white placeholder:text-grey"
       />
     </div>
   );

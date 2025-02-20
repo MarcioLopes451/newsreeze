@@ -24,7 +24,13 @@ export default function Navbar() {
           style={state === false ? { display: "block" } : { display: "none" }}
         />
       </div>
-      {state && <SideNav onclose={handleNav} />}
+      <div
+        className={`fixed -top-14 left-0 h-[108%] transform transition-transform duration-300 ease-in-out ${
+          state ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <SideNav onclose={handleNav} />
+      </div>
     </section>
   );
 }

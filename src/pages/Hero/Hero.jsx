@@ -4,6 +4,7 @@ import ArticleCards from "../../components/ArticleCards/ArticleCards";
 import NoImg from "../../assets/No_Image_Available.jpg";
 import ExploreChannels from "../../components/ExploreChannels/ExploreChannels";
 import RightIcon from "../../assets/352468_arrow_right_icon (1).png";
+import DownIcon from "../../assets/211687_down_arrow_icon (1).png";
 
 const api_url =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=3e41fa0ff049417392568d35d92d96d6";
@@ -74,7 +75,7 @@ export default function Hero() {
             >
               <div className="flex items-center gap-1">
                 <p>{total ? "See less" : "See all"}</p>{" "}
-                <img src={RightIcon} className="w-[20px]" />
+                <img src={DownIcon} className="w-[20px] animate-bounce" />
               </div>
             </button>
           )}

@@ -27,10 +27,7 @@ export default function SideNav({ onclose }) {
 
   console.log(location);
   return (
-    <div
-      className="bg-white w-[300px] fixed top-0 left-0 h-full z-50"
-      onClick={onclose}
-    >
+    <div className="bg-white w-[300px] h-full pt-10" onClick={onclose}>
       <div className="mt-[60px] px-[30px] flex justify-center flex-col gap-5">
         {" "}
         <img
